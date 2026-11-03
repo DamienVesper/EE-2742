@@ -22,6 +22,7 @@ module cold_fsm(
             SL: NEXT_STATE = EN ? SL : SML;
             SML: NEXT_STATE = SMR;
             SMR: NEXT_STATE = SR;
+            default: NEXT_STATE = SL;
         endcase
     end
 
