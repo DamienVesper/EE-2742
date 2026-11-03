@@ -1,7 +1,7 @@
 module illusion(
     input EN,
     input [15:0] DATA,
-    input CLK,
+    input BOARDCLK,
     output wire A, B, C, D, E, F, G,
     output wire [3:0] ONECOLD
 );
@@ -22,7 +22,7 @@ module illusion(
     // Cold_fsm generates one cold wire for the active display.
     cold_fsm c_fsm(
         FASTCLK,
-        en,
+        EN,
         {Q1, Q0},
         ONECOLD
     );
