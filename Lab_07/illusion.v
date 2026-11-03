@@ -23,19 +23,19 @@ module illusion(
     cold_fsm c_fsm(
         FASTCLK,
         EN,
-        {Q1, Q0},
-        ONECOLD
+        ONECOLD,
+        {Q1, Q0}
     );
 
     // The values of Q1 and Q0 can be used to determine which
     // 4b of DATA will be sent to the sevens_driver.
     // We can use a 4-1 mux for this. It needs to be consistent with
     // The state of the FSM.
-    mux_4b_4_1 data_mux (
-        DATA[15:12],
-        DATA[11:8],
-        DATA[7:4],
+    mux_4b_4_1 data_mux(
         DATA[3:0],
+        DATA[7:4],
+        DATA[11:8],
+        DATA[15:12],
         {Q1, Q0},
         {W3, W2, W1, W0}
     );

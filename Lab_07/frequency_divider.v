@@ -1,5 +1,5 @@
 module frequency_divider(input CLKO, output wire CLKF);
-    parameter CLK_COUNT = 18;
+    parameter CLK_COUNT = 20;
     wire CLKS[CLK_COUNT:0];
 
     assign CLKS[0] = CLKO;
