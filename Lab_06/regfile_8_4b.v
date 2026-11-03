@@ -60,14 +60,14 @@ module regfile_8_4b(
         XRADDR2,
         XRADDR1,
         XRADDR0,
-        rq7,
-        rq6,
-        rq5,
-        rq4,
-        rq3,
-        rq2,
-        rq1,
         rq0,
+        rq1,
+        rq2,
+        rq3,
+        rq4,
+        rq5,
+        rq6,
+        rq7,
         DATA_X
     );
 
@@ -75,14 +75,14 @@ module regfile_8_4b(
         YRADDR2,
         YRADDR1,
         YRADDR0,
-        rq7,
-        rq6,
-        rq5,
-        rq4,
-        rq3,
-        rq2,
-        rq1,
         rq0,
+        rq1,
+        rq2,
+        rq3,
+        rq4,
+        rq5,
+        rq6,
+        rq7,
         DATA_Y
     );
 endmodule
