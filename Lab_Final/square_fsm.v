@@ -1,13 +1,13 @@
-module squarenumber(
-        input [3:0] N,
-        input GO,
-        input RST_N,
-        input BOARDCLK,
+module square_fsm(
+    input [3:0] N,
+    input GO,
+    input RST_N,
+    input BOARDCLK,
 
-        output A, B, C, D, E, F, G,
-        output [3:0] ONECOLD,
-        output DONE
-    );
+    output A, B, C, D, E, F, G,
+    output [3:0] ONECOLD,
+    output DONE
+);
 
     wire [7:0] DATA_X;
     wire [7:0] DATA_Y;
