@@ -5,8 +5,8 @@ module regfile_8x8(
     input CLK,
     input [2:0] XADDR,
     input [2:0] YADDR,
-    input [3:0] ZADDR,
-    output [3:0] DATA_X,
+    input [2:0] ZADDR,
+    output [7:0] DATA_X,
     output [7:0] DATA_Y,
     output [7:0] DATA_Z
 );
