@@ -25,7 +25,7 @@ module regfile_8x8(
     reg_8b r6(ACT[6], DATA_IN, CLK, 1, 1, RQ6);
     reg_8b r7(ACT[7], DATA_IN, CLK, 1, 1, RQ7);
 
-    mux8to1_8b mux_x(XRADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_X);
-    mux8to1_8b mux_y(YRADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_Y);
-    mux8to1_8b mux_z(ZRADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_Z);
+    mux8to1_8b mux_x(XADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_X);
+    mux8to1_8b mux_y(YADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_Y);
+    mux8to1_8b mux_z(ZADDR, RQ0, RQ1, RQ2, RQ3, RQ4, RQ5, RQ6, RQ7, DATA_Z);
 endmodule
