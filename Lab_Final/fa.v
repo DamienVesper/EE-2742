@@ -1,4 +1,4 @@
-
 module fa(input A, B, CIN, output wire SUM, COUT);
-    assign {COUT, SUM} = A + B + CIN;
+    assign SUM  = A ^ B ^ CIN;
+    assign COUT = (A & B) | (CIN & (A ^ B));
 endmodule
