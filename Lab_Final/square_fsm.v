@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module square_fsm(
     input [3:0] N,
     input GO,
@@ -257,5 +255,4 @@ module square_fsm(
 
         end
     end
-
 endmodule

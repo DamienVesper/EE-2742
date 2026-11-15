@@ -1,4 +1,3 @@
-
 module mux8to1_8b(
     input [2:0] S,
     input [7:0] I0,
