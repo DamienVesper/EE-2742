@@ -76,7 +76,7 @@ module square_fsm(
     );
 
     // Ripple-Carry Adder
-    rca add_unit(
+    RCA add_unit(
         .A(adder_a),
         .B(adder_b),
         .CIN(1'b0),
