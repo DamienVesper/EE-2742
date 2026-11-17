@@ -1,6 +1,5 @@
 module cold_fsm(
     input CLK,
-    EN,
     output reg [3:0] ONECOLD,
     output reg [1:0] STATE
 );
@@ -19,7 +18,7 @@ module cold_fsm(
     always @(*) begin
         case (STATE)
             SR: NEXT_STATE = SL;
-            SL: NEXT_STATE = EN ? SL : SML;
+            SL: NEXT_STATE = SML;
             SML: NEXT_STATE = SMR;
             SMR: NEXT_STATE = SR;
             default: NEXT_STATE = SL;

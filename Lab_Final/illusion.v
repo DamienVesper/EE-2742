@@ -1,8 +1,7 @@
 module illusion(
     input BOARDCLK,
-    EN,
     input [15:0] DATA,
-    output wire SEGMENTS,
+    output wire [6:0] SEGMENTS,
     output wire [3:0] ONECOLD
 );
     wire [1:0] Q;
@@ -10,7 +9,7 @@ module illusion(
     wire FASTCLK;
 
     frequency_divider fd(BOARDCLK, FASTCLK);
-    cold_fsm c_fsm(FASTCLK, EN, ONECOLD, Q);
+    cold_fsm c_fsm(FASTCLK, ONECOLD, Q);
 
     mux_4to1_4b mux_data(
         Q,

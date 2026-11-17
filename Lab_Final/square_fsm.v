@@ -68,7 +68,7 @@ module square_fsm(
 
         .XADDR(3'd1),
         .YADDR(3'd0),
-        .ZADDR(4'd2),
+        .ZADDR(3'd2),
 
         .DATA_X(DATA_X),
         .DATA_Y(DATA_Y),
@@ -133,7 +133,6 @@ module square_fsm(
 
     illusion display(
         .BOARDCLK(BOARDCLK),
-        .EN(1'b1),
         .DATA(DISPLAY_DATA),
         .SEGMENTS(segments),
         .ONECOLD(ONECOLD)
