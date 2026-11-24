@@ -4,7 +4,6 @@ module bonbon_fsm(
     input RST_N,
     input GO,
     input [3:0] N,
-
     output [6:0] SEGMENTS,
     output [3:0] ONECOLD,
     output DONE

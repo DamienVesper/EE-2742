@@ -15,7 +15,7 @@ module tb_bonbon_fsm();
     integer i;
     integer ERRORS;
 
-    core_fsm uut(
+    bonbon_fsm uut(
         BOARDCLK,
         RST_N,
         GO,
