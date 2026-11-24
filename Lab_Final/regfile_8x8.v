@@ -22,9 +22,9 @@ module regfile_8x8(
     reg_8b r2(ACT[2], DATA_IN, CLK, 1'b1, 1'b1, RQ2);
     reg_8b r3(ACT[3], DATA_IN, CLK, 1'b1, 1'b1, RQ3);
     reg_8b r4(ACT[4], DATA_IN, CLK, 1'b1, 1'b1, RQ4);
-    reg_8b r5(ACT[5], DATA_IN, CLK, 1'b1, 1'b1, RQ5);
 
     // ram altman cries in waste of memory
+    reg_8b r5(ACT[5], DATA_IN, CLK, 1'b1, 1'b1, RQ5);
     reg_8b r6(ACT[6], DATA_IN, CLK, 1'b1, 1'b1, RQ6);
     reg_8b r7(ACT[7], DATA_IN, CLK, 1'b1, 1'b1, RQ7);
 
