@@ -25,7 +25,7 @@ module square_fsm(
     localparam DEC_COUNT = 3'b110;
     localparam COMPLETE = 3'b111;
 
-    rca_8b adder(ADDER_A, ADDER_B, 0, SUM, COUT);
+    rca_8b adder(ADDER_A, ADDER_B, 1'b0, SUM, COUT);
 
     assign ADDER_A = S == ADD_N
         ? DATA_Y
@@ -58,7 +58,7 @@ module square_fsm(
             LOAD_COUNT: begin
                 WADDR = Z;
                 WEN = 1;
-                DATA_IN = DATA_Y;
+                DATA_IN = DATA_X;
             end
             ADD_N: begin
                 WADDR = Y;

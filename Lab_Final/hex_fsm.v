@@ -1,7 +1,7 @@
 module hex_fsm(
     input CLK,
-    input RST_N,
     input GO,
+    input RST_N,
     input [7:0] DATA,
     output reg [3:0] HEX_HIGH,
     output reg [3:0] HEX_LOW,

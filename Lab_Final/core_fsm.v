@@ -146,15 +146,19 @@ module core_fsm(
         WEN = 0;
         DATA_IN = 8'd0;
 
-        X = SQ_X;
-        Y = HEX_X;
-        Z = HEX_Y;
-
         if (S == INIT_SQ || S == AWAIT_SQ) begin
+            X = SQ_X;
+            Y = SQ_Y;
+            Z = SQ_Z;
+
             WADDR = SQ_WADDR;
             WEN = SQ_WEN;
             DATA_IN = SQ_DATA_IN;
         end else begin
+            X = SQ_X;
+            Y = HEX_X;
+            Z = HEX_Y;
+
             case (S)
                 WRITE_HIGH: begin
                     WADDR = HEX_X;

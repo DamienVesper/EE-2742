@@ -6,7 +6,7 @@ module frequency_divider(input CLKO, output wire CLKF);
     genvar i;
 
     for (i = 1; i <= CLK_COUNT; i = i + 1) begin
-        TFF tffi(.T(1), .CLK(CLKS[i - 1]), .PRS_N(1), .CLR_N(1), .Q(CLKS[i]));
+        TFF tffi(.T(1'b1), .CLK(CLKS[i - 1]), .PRS_N(1), .CLR_N(1), .Q(CLKS[i]));
     end
 
     assign CLKF = CLKS[CLK_COUNT];
