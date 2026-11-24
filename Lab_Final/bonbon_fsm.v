@@ -39,7 +39,6 @@ module bonbon_fsm(
     // The same thing as above, but for hex FSM instead.
     localparam HEX_X = 3'd3;
     localparam HEX_Y = 3'd4;
-    localparam HEX_Z = 3'd5;
 
     regfile_8x8 regfile(
         WADDR,

@@ -84,34 +84,22 @@ module square_fsm(
                     DONE <= 0;
                     if (GO) S <= LOAD_N;
                 end
-                LOAD_N: begin
-                    S <= CLEAR;
-                end
-                CLEAR: begin
-                    S <= LOAD_COUNT;
-                end
-                LOAD_COUNT: begin
-                    S <= CHECK;
-                end
+                LOAD_N: S <= CLEAR;
+                CLEAR: S <= LOAD_COUNT;
+                LOAD_COUNT: S <= CHECK;
                 CHECK: begin
                     if (DATA_Z == 8'd0) S <= COMPLETE;
                     else S <= ADD_N;
                 end
-                ADD_N: begin
-                    S <= DEC_COUNT;
-                end
-                DEC_COUNT: begin
-                    S <= CHECK;
-                end
+                ADD_N: S <= DEC_COUNT;
+                DEC_COUNT: S <= CHECK;
                 COMPLETE: begin
                     RES <= DATA_Y;
                     DONE <= 1;
                     
                     if (!GO) S <= INIT;
                 end
-                default: begin
-                    S <= INIT;
-                end
+                default: S <= INIT;
             endcase
         end
     end

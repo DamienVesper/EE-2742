@@ -16,12 +16,15 @@ module regfile_8x8(
 
     dec3to8 dec(WADDR, WEN, ACT);
 
+    // I,S,C,H2,H1
     reg_8b r0(ACT[0], DATA_IN, CLK, 1'b1, 1, RQ0);
     reg_8b r1(ACT[1], DATA_IN, CLK, 1'b1, 1, RQ1);
     reg_8b r2(ACT[2], DATA_IN, CLK, 1'b1, 1, RQ2);
     reg_8b r3(ACT[3], DATA_IN, CLK, 1'b1, 1, RQ3);
     reg_8b r4(ACT[4], DATA_IN, CLK, 1'b1, 1, RQ4);
     reg_8b r5(ACT[5], DATA_IN, CLK, 1'b1, 1, RQ5);
+
+    // ram altman cries in waste of memory
     reg_8b r6(ACT[6], DATA_IN, CLK, 1'b1, 1, RQ6);
     reg_8b r7(ACT[7], DATA_IN, CLK, 1'b1, 1, RQ7);
 
