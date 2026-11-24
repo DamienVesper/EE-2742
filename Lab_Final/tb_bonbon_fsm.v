@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module tb_core_fsm();
+module tb_bonbon_fsm();
 
     reg BOARDCLK;
     reg RST_N;

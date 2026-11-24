@@ -1,4 +1,5 @@
-module core_fsm(
+// James "Bon Bon" Bonner's amazing FSM.
+module bonbon_fsm(
     input BOARDCLK,
     input RST_N,
     input GO,
