@@ -1,5 +1,4 @@
-// TODO: Come up with a better name for ripple carry adder?
-module RCA(
+module rca_8b(
     input [7:0] A,
     B,
     input CIN,

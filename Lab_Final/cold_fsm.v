@@ -6,10 +6,10 @@ module cold_fsm(
 
     reg [1:0] NEXT_STATE;
 
-    parameter SR = 2'b11;
-    parameter SL = 2'b00;
-    parameter SML = 2'b01;
-    parameter SMR = 2'b10;
+    localparam SR = 2'b11;
+    localparam SL = 2'b00;
+    localparam SML = 2'b01;
+    localparam SMR = 2'b10;
 
     always @(posedge CLK) begin
         STATE <= NEXT_STATE;        
@@ -29,9 +29,11 @@ module cold_fsm(
         case (STATE)
             SR: ONECOLD = 4'b1110;
             SL: ONECOLD = 4'b0111;
-            SML: ONECOLD = 4'b1011;
+            SML: ONECOLD = 4'b1111; // Disabled to separate input and output.
             SMR: ONECOLD = 4'b1101;
             default: ONECOLD = 4'b0111;
         endcase
     end
+
+    initial STATE = SL;
 endmodule

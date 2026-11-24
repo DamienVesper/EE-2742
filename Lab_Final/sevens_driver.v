@@ -22,7 +22,7 @@ module sevens_driver(
             14: SEGMENTS = 7'b0110000;
             15: SEGMENTS = 7'b0111000;
 
-            // david told me to do this
+            // Prevents inferred latching. Practically speaking, this is unreachable code.
             default: SEGMENTS = 7'b1111111;
         endcase
     end
