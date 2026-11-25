@@ -1,6 +1,6 @@
 module sevens_driver(
     input [3:0] W,
-    output reg [6:0] SEGMENTS
+    output reg [0:6] SEGMENTS
 );
 
     always @(*) begin

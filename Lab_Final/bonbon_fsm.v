@@ -9,7 +9,8 @@ module bonbon_fsm(
     output DONE
 );
 
-    reg [2:0] S, S_NEXT, WADDR, X, Y, Z;
+    reg [3:0] S, S_NEXT;
+    reg [2:0] WADDR, X, Y, Z;
     reg [3:0] N_REG;
     reg [7:0] DATA_IN;
     reg WEN, SQ_GO, HEX_GO;
@@ -20,14 +21,15 @@ module bonbon_fsm(
     wire [3:0] HEX_HIGH, HEX_LOW;
     wire [2:0] SQ_WADDR;
 
-    localparam INIT = 3'd0;
-    localparam INIT_SQ = 3'd1;
-    localparam AWAIT_SQ = 3'd2;
-    localparam INIT_HEX = 3'd3;
-    localparam AWAIT_HEX = 3'd4;
-    localparam WRITE_HIGH = 3'd5;
-    localparam WRITE_LOW = 3'd6;
-    localparam COMPLETE = 3'd7;
+    localparam INIT = 4'd0;
+    localparam INIT_SQ = 4'd1;
+    localparam AWAIT_SQ = 4'd2;
+    localparam INIT_HEX = 4'd3;
+    localparam AWAIT_HEX = 4'd4;
+    localparam WRITE_HIGH = 4'd5;
+    localparam WRITE_LOW = 4'd6;
+    localparam COMPLETE = 4'd7;
+    localparam READY = 4'd8;
 
     // Contrary to their naming scheme, these actually refer to the register addresses of the relevant ports.
     // Changing these also apply to square FSM. Make modifications accordingly.
@@ -87,14 +89,16 @@ module bonbon_fsm(
         ONECOLD
     );
 
-    assign DISPLAY_DATA = {
-        DATA_X[3:0],
-        4'b0000,
-        DATA_Y[3:0],
-        DATA_Z[3:0]
-    };
+    assign DISPLAY_DATA = !RST_N
+        ? 16'h0000
+        : {
+            N,
+            4'h0,
+            (S == COMPLETE || S == READY) ? DATA_Y[3:0] : 4'h0,
+            (S == COMPLETE || S == READY) ? DATA_Z[3:0] : 4'h0
+        };
 
-    assign DONE = S == COMPLETE;
+    assign DONE = (S == COMPLETE || S == READY) && (N == N_REG);
 
     // Input update logic.
     always @(posedge BOARDCLK, negedge RST_N) begin
@@ -103,7 +107,7 @@ module bonbon_fsm(
             N_REG <= 4'd0;
         end else begin
             S <= S_NEXT;
-            if (S == INIT && GO) N_REG <= N;
+            if ((S == INIT || S == READY) && GO) N_REG <= N;
         end
     end
 
@@ -118,7 +122,8 @@ module bonbon_fsm(
             AWAIT_HEX: if (HEX_DONE) S_NEXT = WRITE_HIGH;
             WRITE_HIGH: S_NEXT = WRITE_LOW;
             WRITE_LOW: S_NEXT = COMPLETE;
-            COMPLETE: if (!GO) S_NEXT = INIT;
+            COMPLETE: if (!GO) S_NEXT = READY;
+            READY: if (GO) S_NEXT = INIT_SQ;
             default: S_NEXT = INIT;
         endcase
     end
